@@ -5,10 +5,13 @@ pipeline {
   {
    agent any
     steps {
-	 withSonarQubeEnv('testsonarq')
+	 withSonarQubeEnv('SonarQube')
 	 {
-	  sh "mvn clean package sonar:sonar -Dsonar.projectKey=jenkins-project1 -Dsonar.projectName='jenkins-project1'"
-	 }
+	 mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=Ashu \
+  -Dsonar.projectName='Ashu' \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.token=sqp_3e9ef2cb577467b3b6c386229a15f611a489598c
 	}
   }
  }
